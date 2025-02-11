@@ -1,30 +1,28 @@
-import * as z from "zod";
 import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
+import {
+  PersonalInfo,
+  PersonalInfoSchema,
+  useCheckoutForm,
+} from "../../contexts/CheckoutFormProvider";
 import CustomButton from "../../components/CustomButton";
 import CustomTextInput from "../../components/CustomTextInput";
 import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
-export const PersonalInfoSchema = z.object({
-  fullName: z
-    .string({ message: "Full name is required!" })
-    .min(1, { message: "Full name must be longer than 1" }),
-  address: z.string().min(1, { message: "Please provide your address!" }),
-  city: z.string().min(1, { message: "City is required!" }),
-  postcode: z.string().min(1, { message: "Postal code is required!" }),
-  phone: z.string().min(1, { message: "Phone is required!" }),
-});
-export type PersonalInfo = z.infer<typeof PersonalInfoSchema>;
-
 const PersonalDetailsForm = () => {
+  const { setPersonalInfo, personalInfo } = useCheckoutForm();
+
   const form = useForm<PersonalInfo>({
     resolver: zodResolver(PersonalInfoSchema),
+    defaultValues: personalInfo,
   });
 
-  const onNext: SubmitHandler<PersonalInfo> = () => {
+  const onNext: SubmitHandler<PersonalInfo> = (data) => {
+    setPersonalInfo(data);
+
     router.push("/checkout/payment");
   };
 

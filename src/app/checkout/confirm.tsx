@@ -3,30 +3,10 @@ import { StyleSheet, Text, View } from "react-native";
 
 import CustomButton from "../../components/CustomButton";
 import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
-
-const personalInfo = {
-  fullName: "Joe do",
-  address: "Address",
-  city: "City",
-  postcode: "1234",
-  phone: "601234123123",
-  country: "US",
-};
-
-const paymentInfo = {
-  cardNumber: "1234123412341234",
-  expireDate: "01/23",
-  cvv: 123,
-};
+import { useCheckoutForm } from "../../contexts/CheckoutFormProvider";
 
 const ConfirmForm = () => {
-  const onNext = () => {
-    // the data is Valid
-
-    // redirect next
-    router.dismissAll();
-    router.back();
-  };
+  const { personalInfo, paymentInfo, onSubmit } = useCheckoutForm();
 
   return (
     <KeyboardAwareScrollView>
@@ -69,7 +49,7 @@ const ConfirmForm = () => {
           </View>
         )}
 
-        <CustomButton title="Submit" onPress={onNext} style={styles.button} />
+        <CustomButton title="Submit" onPress={onSubmit} style={styles.button} />
       </View>
     </KeyboardAwareScrollView>
   );

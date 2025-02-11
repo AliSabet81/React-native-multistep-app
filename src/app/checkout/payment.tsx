@@ -1,28 +1,27 @@
-import * as z from "zod";
 import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
+import {
+  PaymentInfo,
+  PaymentInfoSchema,
+  useCheckoutForm,
+} from "../../contexts/CheckoutFormProvider";
 import CustomButton from "../../components/CustomButton";
 import CustomTextInput from "../../components/CustomTextInput";
 import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
-export const PaymentInfoSchema = z.object({
-  cardNumber: z.string().length(16),
-  expireDate: z
-    .string()
-    .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, "Please use the MM/YY format"),
-  cvv: z.coerce.number().min(100).max(999),
-});
-export type PaymentInfo = z.infer<typeof PaymentInfoSchema>;
-
 const PaymentDetailsForm = () => {
+  const { setPaymentInfo, paymentInfo } = useCheckoutForm();
+
   const form = useForm<PaymentInfo>({
     resolver: zodResolver(PaymentInfoSchema),
+    defaultValues: paymentInfo,
   });
 
-  const onNext: SubmitHandler<PaymentInfo> = () => {
+  const onNext: SubmitHandler<PaymentInfo> = (data) => {
+    setPaymentInfo(data);
     router.push("/checkout/confirm");
   };
 
