@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import CustomButton from "../../components/CustomButton";
 import { router } from "expo-router";
 import CustomTextInput from "../../components/CustomTextInput";
+import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
 const PersonalDetailsForm = () => {
   const onNext = () => {
@@ -13,7 +14,7 @@ const PersonalDetailsForm = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView>
       <CustomTextInput name="fullName" label="Full name" placeholder="Joe do" />
 
       <CustomTextInput name="address" label="Address" placeholder="Address" />
@@ -41,17 +42,12 @@ const PersonalDetailsForm = () => {
       />
 
       <CustomButton title="Next" onPress={onNext} style={styles.button} />
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 export default PersonalDetailsForm;
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 10,
-    gap: 5,
-  },
   button: {
     marginTop: "auto",
     marginBottom: 20,

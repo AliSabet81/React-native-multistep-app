@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { router } from "expo-router";
+import { StyleSheet, Text } from "react-native";
 
 import CustomButton from "../../components/CustomButton";
-import { router } from "expo-router";
+import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
 const ConfirmForm = () => {
   const onNext = () => {
@@ -13,19 +14,15 @@ const ConfirmForm = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView>
       <Text>Confirm form</Text>
       <CustomButton title="Submit" onPress={onNext} style={styles.button} />
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 export default ConfirmForm;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-  },
   button: {
     marginTop: "auto",
     marginBottom: 20,
