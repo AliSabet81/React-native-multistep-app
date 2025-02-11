@@ -25,9 +25,6 @@ const PersonalDetailsForm = () => {
   });
 
   const onNext: SubmitHandler<PersonalInfo> = () => {
-    // the data is Valid
-
-    // redirect next
     router.push("/checkout/payment");
   };
 
@@ -78,6 +75,5 @@ export default PersonalDetailsForm;
 const styles = StyleSheet.create({
   button: {
     marginTop: "auto",
-    marginBottom: 20,
   },
 });
