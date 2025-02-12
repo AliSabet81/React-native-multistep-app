@@ -9,6 +9,8 @@ import {
   useCheckoutForm,
 } from "../../contexts/CheckoutFormProvider";
 import CustomButton from "../../components/CustomButton";
+import CustomSwitch from "../../components/CustomSwitch";
+import CustomCheckbox from "../../components/CustomCheckbox";
 import CustomTextInput from "../../components/CustomTextInput";
 import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
@@ -50,6 +52,9 @@ const PaymentDetailsForm = () => {
             containerStyle={{ flex: 1 }}
           />
         </View>
+
+        <CustomCheckbox name="saveCard" label="Save credit card" />
+        <CustomSwitch name="switchValue" label="On or off?" />
 
         <CustomButton
           title="Next"
