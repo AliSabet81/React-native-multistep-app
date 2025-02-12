@@ -8,7 +8,9 @@ import {
   PersonalInfoSchema,
   useCheckoutForm,
 } from "../../contexts/CheckoutFormProvider";
+import countries from "../../../assets/countries.json";
 import CustomButton from "../../components/CustomButton";
+import CustomPicker from "../../components/CustomPicker";
 import CustomTextInput from "../../components/CustomTextInput";
 import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
@@ -57,6 +59,16 @@ const PersonalDetailsForm = () => {
           label="Phone number"
           placeholder="601234123123"
           inputMode="tel"
+        />
+
+        <CustomPicker
+          name="country"
+          label="Country"
+          placeholder={{ label: "Select country" }}
+          items={countries.map((country) => ({
+            label: country.name,
+            value: country.code,
+          }))}
         />
 
         <CustomButton
