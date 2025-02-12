@@ -12,6 +12,7 @@ import countries from "../../../assets/countries.json";
 import CustomButton from "../../components/CustomButton";
 import CustomPicker from "../../components/CustomPicker";
 import CustomTextInput from "../../components/CustomTextInput";
+import CustomDateTimePicker from "../../components/CustomDateTimePicker";
 import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
 const PersonalDetailsForm = () => {
@@ -70,6 +71,8 @@ const PersonalDetailsForm = () => {
             value: country.code,
           }))}
         />
+
+        <CustomDateTimePicker name="birthdate" />
 
         <CustomButton
           title="Next"
