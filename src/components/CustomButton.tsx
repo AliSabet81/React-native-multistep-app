@@ -24,6 +24,7 @@ const CustomButton = forwardRef<View, CustomButton>(
     );
   }
 );
+export default CustomButton;
 
 const styles = StyleSheet.create({
   button: {
@@ -46,5 +47,3 @@ const styles = StyleSheet.create({
     right: 20,
   },
 });
-
-export default CustomButton;

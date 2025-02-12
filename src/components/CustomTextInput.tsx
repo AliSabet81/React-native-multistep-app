@@ -15,12 +15,12 @@ type CustomTextInput = {
   name: string;
 } & ComponentProps<typeof TextInput>;
 
-export default function CustomTextInput({
+const CustomTextInput = ({
   label,
   containerStyle,
   name,
   ...textInputProps
-}: CustomTextInput) {
+}: CustomTextInput) => {
   const {
     field: { value, onBlur, onChange },
     fieldState: { error },
@@ -45,7 +45,8 @@ export default function CustomTextInput({
       </Text>
     </View>
   );
-}
+};
+export default CustomTextInput;
 
 const styles = StyleSheet.create({
   input: {

@@ -2,9 +2,7 @@ import { PropsWithChildren } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 
-export default function KeyboardAwareScrollView({
-  children,
-}: PropsWithChildren) {
+const KeyboardAwareScrollView = ({ children }: PropsWithChildren) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -26,4 +24,5 @@ export default function KeyboardAwareScrollView({
       </ScrollView>
     </KeyboardAvoidingView>
   );
-}
+};
+export default KeyboardAwareScrollView;

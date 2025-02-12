@@ -1,9 +1,9 @@
-import { Link, router } from "expo-router";
+import { Link } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 
 import CustomButton from "../../components/CustomButton";
-import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 import { useCheckoutForm } from "../../contexts/CheckoutFormProvider";
+import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
 const ConfirmForm = () => {
   const { personalInfo, paymentInfo, onSubmit } = useCheckoutForm();
